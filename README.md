@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="./assets/murple_logo.png" alt="logo" width="140"  height="auto" />
+  <img src="./murple_logo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
 <h3><b>Awesome books</b></h3>
@@ -164,6 +164,10 @@ Example:
 - Twitter: [@BillyMohajeri](https://twitter.com/BillyMohajeri)
 - LinkedIn: [@BillyMohajeri](https://www.linkedin.com/in/billymohajeri)
 
+👤 **Fahimullah Tanvir**
+
+- GitHub: [@Fahim-Khan-P](https://github.com/Fahim-Khan-P)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
@@ -229,7 +233,7 @@ I would like to thank all of my code reviewers for giving me constructive feedba
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./LICENSE/MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
