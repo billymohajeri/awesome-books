@@ -29,9 +29,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Iranian Film Week 2023 <a name="about-project"></a>
+# 📖 Awesome Books <a name="about-project"></a>
 
-**Iranian Film Week 2023** is my first capstone project based on an online website for a conference. But I personalize the content for a film review week.
+**Awesome Books** In this project, we made a basic website that allows users to add/remove books from a list. we achieved that by using JavaScript classes. we also dynamically modified the DOM and added basic events.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -42,6 +42,7 @@
   <ul>
     <li>HTML</li>
     <li>JavaScript</li>
+    <li>CSS</li>
     </ul>
 </details>
 
