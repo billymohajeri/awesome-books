@@ -1,4 +1,89 @@
+body {
+  font-family: "Comic Neue", cursive;
+}
+
+.main-container {
+  width: 50%;
+  min-width: 450px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.books-container {
+  width: 100%;
+  border: black 2px solid;
+  border-radius: 1%;
+}
+
+article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1%;
+  height: 30px;
+}
+
+article:nth-of-type(odd) {
+  background-color: #ddd;
+}
+
+article:nth-of-type(even) {
+  background-color: #fff;
+}
+
+.form-container {
+  width: 50%;
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p,
+input,
+button {
+  font-weight: bold;
+  margin: 0;
+}
+
+#title,
+#author {
+  padding: 0.2rem;
+  width: 100%;
+}
+
+button {
+  box-shadow: rgba(0, 0, 0, 1) 5px 5px;
+  margin: 0 0.5rem;
+  height: 30px;
+  font-size: 1rem;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+}
+
 hr {
   width: 40%;
-  margin-left: 0;
+  border: black solid 2px;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
+
+#add {
+  margin-left: 90%;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+  margin-top: 1rem;
 }

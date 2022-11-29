@@ -5,20 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap"
+      rel="stylesheet"
+    />
     <title>Awesome Books</title>
   </head>
   <body>
-    <h1>Awesome books</h1>
-    <section id="saved-books"></section>
-    <form action="">
-      <input type="text" placeholder="Title" id="title" required />
-      <br />
-      <br />
-      <input type="text" placeholder="Author" id="author" required />
-      <br />
-      <br />
-      <button id="add">Add</button>
-    </form>
+    <section class="main-container">
+      <h1>All awesome books</h1>
+      <section id="saved-books" class="books-container">
+        <!-- This part will generate dynamically -->
+      </section>
+      <form class="form-container">
+        <hr />
+        <h3>Add a new book</h3>
+        <input type="text" placeholder="Title" id="title" required />
+        <br />
+        <br />
+        <input type="text" placeholder="Author" id="author" required />
+        <br />
+        <button id="add">Add</button>
+      </form>
+    </section>
     <script src="./script.js"></script>
   </body>
 </html>
