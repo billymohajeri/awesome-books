@@ -5,20 +5,47 @@ const add = document.getElementById('add');
 
 const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
 
+const savedBooksSection = document.getElementById('saved-books');
+
+// Class of book 
+class Books {
+    // constructor which execute directely when new create keyword 
+    constructor (title, author)
+    {
+        // id wich we need for remove btn as well 
+        this.book = {id: this.allBooks.length + 1, title, author}   
+    }
+
+    // Cheak local localStorage 
+    allBooks = booksFromLocalStorage ? booksFromLocalStorage : [];
+
+    add() {
+        this.allBooks.push(this.book)
+        localStorage.setItem('books', JSON.stringify(this.allBooks));
+    }
+
+    remove(bookId) {
+        this.allBooks = this.allBooks.filter((book) => book.id !== bookId);
+        localStorage.setItem('books', JSON.stringify(this.allBooks));
+        savedBooksSection.innerHTML = '';
+    }
+}
+
+const book = new Books(titles.value, authors.value);
+
 function showBooks() {
   if (booksFromLocalStorage) {
-    for (let index = 0; index < booksFromLocalStorage.length; index += 1) {
-      const savedBooksSection = document.getElementById('saved-books');
+    for (let index = 0; index < book.allBooks.length; index += 1) {
       const titleP = document.createElement('p');
-      titleP.innerText = booksFromLocalStorage[index].title;
-      titleP.innerText += `\n${booksFromLocalStorage[index].author}`;
+      titleP.innerText = book.allBooks[index].title;
+      titleP.innerText += `\n${book.allBooks[index].author}`;
       const btnRemove = document.createElement('button');
       btnRemove.innerText = 'Remove';
       btnRemove.className = 'remove-button';
       btnRemove.addEventListener('click', () => {
-        booksFromLocalStorage.splice(index, 1);
-        localStorage.setItem('books', JSON.stringify(booksFromLocalStorage));
-        document.location.reload();
+        book.remove(book.allBooks[index].id);
+
+        showBooks()
       });
       const hr = document.createElement('hr');
       savedBooksSection.append(titleP, btnRemove, hr);
@@ -28,17 +55,9 @@ function showBooks() {
 
 showBooks();
 
+
 add.addEventListener('click', () => {
-  const newBook = {
-    title: titles.value,
-    author: authors.value,
-  };
-  if (booksFromLocalStorage) {
-    localStorage.setItem(
-      'books',
-      JSON.stringify([...booksFromLocalStorage, newBook]),
-    );
-  } else {
-    localStorage.setItem('books', JSON.stringify([newBook]));
-  }
+    book.book.title = titles.value;
+    book.book.author = authors.value;
+    book.add();
 });
