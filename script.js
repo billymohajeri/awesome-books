@@ -1,10 +1,7 @@
 const titles = document.getElementById('title');
 const authors = document.getElementById('author');
-
 const add = document.getElementById('add');
-
 const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
-
 const savedBooksSection = document.getElementById('saved-books');
 
 // Class of book
@@ -28,33 +25,33 @@ class Books {
     localStorage.setItem('books', JSON.stringify(this.allBooks));
     savedBooksSection.innerHTML = '';
   }
+
+  showBooks() {
+    if (this.allBooks.length) {
+      for (let index = 0; index < this.allBooks.length; index += 1) {
+        const bookArticle = document.createElement('article');
+        const titleP = document.createElement('p');
+        titleP.innerText = `"${this.allBooks[index].title}`;
+        titleP.innerText += `" by ${this.allBooks[index].author}`;
+        const btnRemove = document.createElement('button');
+        btnRemove.innerText = 'Remove';
+        btnRemove.className = 'remove-button';
+        btnRemove.addEventListener('click', () => {
+          this.remove(this.allBooks[index].id);
+          this.showBooks();
+        });
+        savedBooksSection.append(bookArticle);
+        bookArticle.append(titleP, btnRemove);
+      }
+    } else {
+      savedBooksSection.style.display = 'none';
+    }
+  }
 }
 
 const book = new Books(titles.value, authors.value);
 
-function showBooks() {
-  if (book.allBooks.length) {
-    for (let index = 0; index < book.allBooks.length; index += 1) {
-      const bookArticle = document.createElement('article');
-      const titleP = document.createElement('p');
-      titleP.innerText = `"${book.allBooks[index].title}`;
-      titleP.innerText += `" by ${book.allBooks[index].author}`;
-      const btnRemove = document.createElement('button');
-      btnRemove.innerText = 'Remove';
-      btnRemove.className = 'remove-button';
-      btnRemove.addEventListener('click', () => {
-        book.remove(book.allBooks[index].id);
-        showBooks();
-      });
-      savedBooksSection.append(bookArticle);
-      bookArticle.append(titleP, btnRemove);
-    }
-  } else {
-    savedBooksSection.style.display = 'none';
-  }
-}
-
-showBooks();
+book.showBooks();
 
 add.addEventListener('click', () => {
   book.book.title = titles.value;
