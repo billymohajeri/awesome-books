@@ -3,6 +3,15 @@ const authors = document.getElementById('author');
 const add = document.getElementById('add');
 const booksFromLocalStorage = JSON.parse(localStorage.getItem('books'));
 const savedBooksSection = document.getElementById('saved-books');
+const form = document.querySelector('.add-book-form');
+const bookList = document.querySelector('.books-list');
+const contactInfo = document.querySelector('.contact-info');
+
+function showAdd() {
+  bookList.classList.add('non-visible');
+  form.classList.remove('non-visible');
+  contactInfo.classList.add('non-visible');
+}
 
 // Class of book
 class Books {
@@ -18,12 +27,12 @@ class Books {
   add() {
     this.allBooks.push(this.book);
     localStorage.setItem('books', JSON.stringify(this.allBooks));
+    showAdd();
   }
 
   remove(bookId) {
     this.allBooks = this.allBooks.filter((book) => book.id !== bookId);
     localStorage.setItem('books', JSON.stringify(this.allBooks));
-    savedBooksSection.innerHTML = '';
   }
 
   showBooks() {
@@ -38,13 +47,16 @@ class Books {
         btnRemove.className = 'remove-button';
         btnRemove.addEventListener('click', () => {
           this.remove(this.allBooks[index].id);
-          this.showBooks();
+          if (!this.allBooks.length) {
+            savedBooksSection.innerText = 'The list is empty...';
+          }
+          btnRemove.parentElement.remove();
         });
         savedBooksSection.append(bookArticle);
         bookArticle.append(titleP, btnRemove);
       }
     } else {
-      savedBooksSection.style.display = 'none';
+      savedBooksSection.innerText = 'The list is empty...';
     }
   }
 }
@@ -56,5 +68,30 @@ book.showBooks();
 add.addEventListener('click', () => {
   book.book.title = titles.value;
   book.book.author = authors.value;
-  book.add();
+  book.book.id = book.allBooks.length + 1;
+  if (book.book.title && book.book.author) {
+    book.add();
+  }
 });
+
+function showList() {
+  if (bookList.classList.contains('non-visible')) {
+    bookList.classList.remove('non-visible');
+    form.classList.add('non-visible');
+    contactInfo.classList.add('non-visible');
+  }
+}
+
+function showContact() {
+  bookList.classList.add('non-visible');
+  form.classList.add('non-visible');
+  contactInfo.classList.remove('non-visible');
+}
+
+const listLi = document.getElementById('list-li');
+const addLi = document.getElementById('add-li');
+const contactLi = document.getElementById('contact-li');
+
+listLi.addEventListener('click', showList);
+addLi.addEventListener('click', showAdd);
+contactLi.addEventListener('click', showContact);
