@@ -46,10 +46,6 @@ article:nth-of-type(even) {
   align-items: center;
 }
 
-.add-book-form h1 {
-  margin-bottom: 10%;
-}
-
 p,
 input,
 button {
@@ -100,6 +96,10 @@ h2 {
 h3 {
   font-size: 2.5rem;
   margin-top: 1rem;
+}
+
+.add-book-form h1 {
+  margin-bottom: 10%;
 }
 
 li {
